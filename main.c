@@ -48,7 +48,7 @@ static PyObject *transposition_cipher(PyObject *self, PyObject *args){
     if (!PyArg_ParseTuple(args, "i", &key)) {
         return NULL;
     }
-	char *input;
+	char *input=str;
 	char *output;
 
 	for (int i = 0; i < strlen(input); i++) {
