@@ -55,7 +55,7 @@ static PyObject *transposition_cipher(PyObject *self, PyObject *args){
 
     int index = get_alphabet_index(input[i]);
 
-    int output_index = (index + key) % ALPHABET_SIZE;
+    int output_index = (index + key) % 26;
 
     output[output_index] = input[i];
   }
@@ -101,7 +101,7 @@ static PyObject *atbash_decoder(PyObject *self, PyObject *args){
     }
     return Py_BuildValue("s", decoded);}
 
-static PyObject *vigenere_cipher(PyObject *self, PyObject *args){ /* Сортировка вставками */
+static PyObject *vigenere_cipher(PyObject *self, PyObject *args){ /* Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  ГўГ±ГІГ ГўГЄГ Г¬ГЁ */
     const char *str1;
     const char *key1;
     if (!PyArg_ParseTuple(args, "s", &str1, &key1)) {
@@ -139,66 +139,66 @@ static PyObject *vigenere_decoder(PyObject *self, PyObject *args){
 
 
 
-/* Массив структур, описывающий методы модуля */
+/* ГЊГ Г±Г±ГЁГў Г±ГІГ°ГіГЄГІГіГ°, Г®ГЇГЁГ±Г»ГўГ ГѕГ№ГЁГ© Г¬ГҐГІГ®Г¤Г» Г¬Г®Г¤ГіГ«Гї */
 static PyMethodDef ownmod_methods[] = {
     {
-	"caesar_cipher", /* название функции внутри python */
-	caesar_cipher, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"caesar_cipher" /* документация для функции внутри python */
+	"caesar_cipher", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	caesar_cipher, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"caesar_cipher" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     {
-	"transposition_cipher", /* название функции внутри python */
-	transposition_cipher, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"transposition_cipher" /* документация для функции внутри python */
+	"transposition_cipher", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	transposition_cipher, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"transposition_cipher" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     {
-	"atbash_cipher", /* название функции внутри python */
-	atbash_cipher, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"atbash_cipher" /* документация для функции внутри python */
+	"atbash_cipher", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	atbash_cipher, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"atbash_cipher" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     {
-	"atbash_decoder", /* название функции внутри python */
-	atbash_decoder, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"atbash_decoder" /* документация для функции внутри python */
+	"atbash_decoder", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	atbash_decoder, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"atbash_decoder" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     {
-	"vigenere_cipher", /* название функции внутри python */
-	vigenere_cipher, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"vigenere_cipher" /* документация для функции внутри python */
+	"vigenere_cipher", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	vigenere_cipher, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"vigenere_cipher" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     {
-	"vigenere_decoder", /* название функции внутри python */
-	vigenere_decoder, /* функция C */
-	 METH_VARARGS, /* макрос, поясняющий, что функция у нас с аргументами */
-	"vigenere_decoder" /* документация для функции внутри python */
+	"vigenere_decoder", /* Г­Г Г§ГўГ Г­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
+	vigenere_decoder, /* ГґГіГ­ГЄГ¶ГЁГї C */
+	 METH_VARARGS, /* Г¬Г ГЄГ°Г®Г±, ГЇГ®ГїГ±Г­ГїГѕГ№ГЁГ©, Г·ГІГ® ГґГіГ­ГЄГ¶ГЁГї Гі Г­Г Г± Г± Г Г°ГЈГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+	"vigenere_decoder" /* Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¶ГЁГї Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ ГўГ­ГіГІГ°ГЁ python */
     },
     { NULL, NULL, 0, NULL }
 };
 
 
-/* Cтруктура, которая описывает непосредственно сам модуль */
+/* CГІГ°ГіГЄГІГіГ°Г , ГЄГ®ГІГ®Г°Г Гї Г®ГЇГЁГ±Г»ГўГ ГҐГІ Г­ГҐГЇГ®Г±Г°ГҐГ¤Г±ГІГўГҐГ­Г­Г® Г±Г Г¬ Г¬Г®Г¤ГіГ«Гј */
 static PyModuleDef simple_module = {
-    PyModuleDef_HEAD_INIT, /* обязательный макрос */
+    PyModuleDef_HEAD_INIT, /* Г®ГЎГїГ§Г ГІГҐГ«ГјГ­Г»Г© Г¬Г ГЄГ°Г®Г± */
     "ciphers", /* sortingMethods.__name__ */
     "interesting siphers", /* siphers.__doc__ */
     -1,
-    ownmod_methods, /* передаем массив с методами модуля */
+    ownmod_methods, /* ГЇГҐГ°ГҐГ¤Г ГҐГ¬ Г¬Г Г±Г±ГЁГў Г± Г¬ГҐГІГ®Г¤Г Г¬ГЁ Г¬Г®Г¤ГіГ«Гї */
     NULL,NULL,NULL
 };
 
 
-/* Создание самого модуля */
+/* Г‘Г®Г§Г¤Г Г­ГЁГҐ Г±Г Г¬Г®ГЈГ® Г¬Г®Г¤ГіГ«Гї */
 PyMODINIT_FUNC PyInit_ciphers(void)
 {
     PyObject* m;
-    /* создаем модуль */
+    /* Г±Г®Г§Г¤Г ГҐГ¬ Г¬Г®Г¤ГіГ«Гј */
     m = PyModule_Create(&simple_module);
-    /* если все корректно, то эта проверка не проходит */
+    /* ГҐГ±Г«ГЁ ГўГ±ГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г®, ГІГ® ГЅГІГ  ГЇГ°Г®ГўГҐГ°ГЄГ  Г­ГҐ ГЇГ°Г®ГµГ®Г¤ГЁГІ */
     if (m == NULL)
         return NULL;
     return m;
